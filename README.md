@@ -59,12 +59,12 @@ This repository contains a solution for deploying Sonarqube on a Minikube cluste
 - Health checks implemented
 
 ## Technical Details
-Recommended Prerequisites:
+Minimum Prerequisites:
 
-- Ubuntu 22.04
-- 4GB RAM
+- Ubuntu OS
+- 8GB RAM
 - 2 CPU cores
-- 10GB free disk space
+- 15GB free disk space
 - Internet connection
 
 Required Software:
@@ -83,9 +83,12 @@ Deployment
 git clone https://github.com/r1chyyy/minikube-sonarqube-task.git
 cd minikube-sonarqube-task
 
-# Set proper permissions:
+# Set proper permissions (most likely not needed):
 sudo chmod +x deploy.sh
 sudo chmod +x install_dependencies.sh
+
+# If fresh docker installation:
+sudo usermod -aG docker $USER && newgrp docker
 
 # Run dependacny installation and deployment:
 ./install_dependencies.sh
@@ -95,17 +98,23 @@ sudo chmod +x install_dependencies.sh
 Verification
 
 ```text
-Check pod status:
+# Check pod status:
 kubectl get pods -n sonarqube
 
-Access Sonarqube:
+# Access Sonarqube:
 echo "http://$(minikube ip)"
+
+# otherwise port-forwarding might be needed:
+kubectl port-forward svc/sonarqube-sonarqube 9000:9000 -n sonarqube --address='0.0.0.0'
+# Now it should be <your-instance-public-IP>:9000
 ```
 
 Default credentials:
 
 - Username: admin
 - Password: admin
+
+AS THIS IS ONLY A TEST DEPLOYMENT, THE WEBPAGE ITSELF MAY HAVE ISSUES
 
 Cleanup
 
@@ -144,11 +153,13 @@ minikube delete
 - Implement HTTPS
 - Configure network policies
 - Implement secret management
+- Store state-file in a safe location
 
 2. High Availability
 
 - Configure pod disruption budgets
 - Implement proper backup strategies
+- Make sure the front-end is working
 
 3. Monitoring
 
