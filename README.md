@@ -55,8 +55,6 @@ This repository contains a solution for deploying Sonarqube on a Minikube cluste
 
 - Deployed using official Sonarqube Helm chart
 - Persistent volume enabled for data storage
-- Resource limits configured appropriately
-- Health checks implemented
 
 ## Technical Details
 Minimum Prerequisites:
@@ -89,7 +87,7 @@ sudo chmod +x deploy.sh
 # If fresh docker installation:
 sudo usermod -aG docker $USER && newgrp docker
 
-# Run dependacny installation and deployment (will call the install_dependencies.sh first):
+# Run the deployment script (will call the install_dependencies.sh first):
 ./deploy.sh
 ```
 
