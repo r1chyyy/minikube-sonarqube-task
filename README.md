@@ -21,6 +21,7 @@ This repository contains a solution for deploying Sonarqube on a Minikube cluste
 ├── deploy.sh          # Main deployment script
 ├── main.tf           # Terraform configuration
 └── .gitignore        # Git ignore file
+```
 
 ## Requirements Implementation
 1. Helm Configuration
@@ -78,8 +79,8 @@ Terraform
 Deployment
 
 Clone the repository:
-git clone <repository-url>
-cd <repository-name>
+git clone https://github.com/r1chyyy/minikube-sonarqube-task.git
+cd minikube-sonarqube-task
 
 Set proper permissions:
 sudo chmod +x deploy.sh
