@@ -17,10 +17,11 @@ This repository contains a solution for deploying Sonarqube on a Minikube cluste
 
 ```text
 .
-├── README.md          # This file
-├── deploy.sh          # Main deployment script
-├── main.tf           # Terraform configuration
-└── .gitignore        # Git ignore file
+├── README.md          		# This file
+├── install_dependencies.sh	# For easier dependancy management
+├── deploy.sh          		# Main deployment script
+├── main.tf           		# Terraform configuration
+└── .gitignore       		# Git ignore file
 ```
 
 ## Requirements Implementation
@@ -86,7 +87,7 @@ cd minikube-sonarqube-task
 sudo chmod +x deploy.sh
 sudo chmod +x install_dependencies.sh
 
-# Run ependacny installation and deployment:
+# Run dependacny installation and deployment:
 ./install_dependencies.sh
 ./deploy.sh
 ```
