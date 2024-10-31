@@ -78,23 +78,29 @@ Terraform
 ##  Usage
 Deployment
 
-Clone the repository:
+```text
+# Clone the repository:
 git clone https://github.com/r1chyyy/minikube-sonarqube-task.git
 cd minikube-sonarqube-task
 
-Set proper permissions:
+# Set proper permissions:
 sudo chmod +x deploy.sh
+sudo chmod +x install_dependencies.sh
 
-Run deployment:
+# Run ependacny installation and deployment:
+./install_dependencies.sh
 ./deploy.sh
+```
 
 Verification
 
+```text
 Check pod status:
 kubectl get pods -n sonarqube
 
 Access Sonarqube:
 echo "http://$(minikube ip)"
+```
 
 Default credentials:
 
@@ -102,9 +108,12 @@ Username: admin
 Password: admin
 
 Cleanup
-To remove all resources:
+
+```text
+# To remove all resources:
 terraform destroy -auto-approve
 minikube delete
+```
 
 ## Design Decisions
 Why Minikube?
@@ -113,7 +122,6 @@ Suitable for development and testing
 Built-in ingress support
 Easy to set up and tear down
 Minimal resource requirements
-(Also a requirement)
 
 Why Terraform?
 
@@ -121,7 +129,6 @@ Infrastructure as Code best practices
 Reproducible deployments
 State management
 Dependency handling
-(Also a requirement)
 
 Why Separate PostgreSQL Chart?
 
@@ -129,7 +136,6 @@ Better resource isolation
 Independent scaling
 Separate backup and restore processes
 Follows microservices best practices
-(Also a requirement)
 
 
 ## Future Improvements
