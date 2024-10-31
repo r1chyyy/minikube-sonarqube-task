@@ -61,18 +61,27 @@ Health checks implemented
 Prerequisites
 
 Ubuntu 22.04 (recommended)
+
 Minimum 4GB RAM
+
 2 CPU cores
+
 10GB free disk space
+
 Internet connection
 
 Required Software
+
 The deployment script will check for and use:
 
 Docker
+
 Minikube
+
 kubectl
+
 Helm 3
+
 Terraform
 
 ##  Usage
@@ -105,6 +114,7 @@ echo "http://$(minikube ip)"
 Default credentials:
 
 Username: admin
+
 Password: admin
 
 Cleanup
@@ -119,22 +129,31 @@ minikube delete
 Why Minikube?
 
 Suitable for development and testing
+
 Built-in ingress support
+
 Easy to set up and tear down
+
 Minimal resource requirements
 
 Why Terraform?
 
 Infrastructure as Code best practices
+
 Reproducible deployments
+
 State management
+
 Dependency handling
 
 Why Separate PostgreSQL Chart?
 
 Better resource isolation
+
 Independent scaling
+
 Separate backup and restore processes
+
 Follows microservices best practices
 
 
@@ -143,16 +162,21 @@ Follows microservices best practices
 1. Security Enhancements
 
 Implement HTTPS
+
 Configure network policies
+
 Implement secret management
 
 2. High Availability
 
 Configure pod disruption budgets
+
 Implement proper backup strategies
 
 3. Monitoring
 
 Add Prometheus metrics
+
 Configure logging
+
 Implement alerting
