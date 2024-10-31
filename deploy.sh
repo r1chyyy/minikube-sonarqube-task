@@ -1,6 +1,17 @@
 #!/bin/bash
 set -e
 
+echo "Checking and installing dependencies if needed..."
+# Call install_dependencies script
+if [ -f "./install_dependencies.sh" ]; then
+    chmod +x ./install_dependencies.sh
+    ./install_dependencies.sh
+else
+    echo "Error: install_dependencies.sh not found"
+    exit 1
+fi
+
+
 # Quick dependency check
 for cmd in docker kubectl minikube helm terraform; do
     if ! command -v $cmd &> /dev/null; then

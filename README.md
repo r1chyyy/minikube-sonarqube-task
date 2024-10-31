@@ -85,13 +85,11 @@ cd minikube-sonarqube-task
 
 # Set proper permissions (most likely not needed):
 sudo chmod +x deploy.sh
-sudo chmod +x install_dependencies.sh
 
 # If fresh docker installation:
 sudo usermod -aG docker $USER && newgrp docker
 
-# Run dependacny installation and deployment:
-./install_dependencies.sh
+# Run dependacny installation and deployment (will call the install_dependencies.sh first):
 ./deploy.sh
 ```
 
