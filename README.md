@@ -26,63 +26,53 @@ This repository contains a solution for deploying Sonarqube on a Minikube cluste
 ## Requirements Implementation
 1. Helm Configuration
 
-Implemented using Helm 3 (no Tiller required)
-Helm provider configured in Terraform with proper kubernetes context
-Helm repositories automatically added during deployment
+- Implemented using Helm 3 (no Tiller required)
+- Helm provider configured in Terraform with proper kubernetes context
+- Helm repositories automatically added during deployment
 
 2. Nginx Ingress Controller
 
-Implemented using Minikube's built-in ingress addon
-Enabled automatically during deployment
-Configured to handle Sonarqube ingress traffic
-Ingress class properly set in Sonarqube helm chart
+- Implemented using Minikube's built-in ingress addon
+- Enabled automatically during deployment
+- Configured to handle Sonarqube ingress traffic
+- Ingress class properly set in Sonarqube helm chart
 
 3. PostgreSQL Installation
 
-Deployed using official Bitnami PostgreSQL Helm chart
-Runs in separate pod within the same namespace
-Configured with persistent storage
-Credentials managed via Terraform variables
+- Deployed using official Bitnami PostgreSQL Helm chart
+- Runs in separate pod within the same namespace
+- Configured with persistent storage
+- Credentials managed via Terraform variables
 
 4. Sonarqube Database Configuration
 
-External database configuration pointing to PostgreSQL instance
-Database credentials passed through Helm values
-Connection validated during deployment
+- External database configuration pointing to PostgreSQL instance
+- Database credentials passed through Helm values
+- Connection validated during deployment
 
 5. Sonarqube Installation
 
-Deployed using official Sonarqube Helm chart
-Persistent volume enabled for data storage
-Resource limits configured appropriately
-Health checks implemented
+- Deployed using official Sonarqube Helm chart
+- Persistent volume enabled for data storage
+- Resource limits configured appropriately
+- Health checks implemented
 
 ## Technical Details
-Prerequisites
+Recommended Prerequisites:
 
-Ubuntu 22.04 (recommended)
+- Ubuntu 22.04
+- 4GB RAM
+- 2 CPU cores
+- 10GB free disk space
+- Internet connection
 
-Minimum 4GB RAM
+Required Software:
 
-2 CPU cores
-
-10GB free disk space
-
-Internet connection
-
-Required Software
-
-The deployment script will check for and use:
-
-Docker
-
-Minikube
-
-kubectl
-
-Helm 3
-
-Terraform
+- Docker
+- Minikube
+- Kubectl
+- Helm 3
+- Terraform
 
 ##  Usage
 Deployment
@@ -113,9 +103,8 @@ echo "http://$(minikube ip)"
 
 Default credentials:
 
-Username: admin
-
-Password: admin
+- Username: admin
+- Password: admin
 
 Cleanup
 
@@ -126,57 +115,42 @@ minikube delete
 ```
 
 ## Design Decisions
-Why Minikube?
+1. Why Minikube?
 
-Suitable for development and testing
+- Suitable for development and testing
+- Built-in ingress support
+- Easy to set up and tear down
+- Minimal resource requirements
 
-Built-in ingress support
+2. Why Terraform?
 
-Easy to set up and tear down
+- Infrastructure as Code best practices
+- Reproducible deployments
+- State management
+- Dependency handling
 
-Minimal resource requirements
+3. Why Separate PostgreSQL Chart?
 
-Why Terraform?
-
-Infrastructure as Code best practices
-
-Reproducible deployments
-
-State management
-
-Dependency handling
-
-Why Separate PostgreSQL Chart?
-
-Better resource isolation
-
-Independent scaling
-
-Separate backup and restore processes
-
-Follows microservices best practices
-
+- Better resource isolation
+- Independent scaling
+- Separate backup and restore processes
+- Follows microservices best practices
 
 ## Future Improvements
 
 1. Security Enhancements
 
-Implement HTTPS
-
-Configure network policies
-
-Implement secret management
+- Implement HTTPS
+- Configure network policies
+- Implement secret management
 
 2. High Availability
 
-Configure pod disruption budgets
-
-Implement proper backup strategies
+- Configure pod disruption budgets
+- Implement proper backup strategies
 
 3. Monitoring
 
-Add Prometheus metrics
-
-Configure logging
-
-Implement alerting
+- Add Prometheus metrics
+- Configure logging
+- Implement alerting
